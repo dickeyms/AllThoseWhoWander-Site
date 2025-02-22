@@ -9,13 +9,31 @@
 <body>
     <div id="background"></div> <!-- Background div for fade-in -->
 
+    <div class="content">
+        <p class="small-text">MYKD</p>
+        <h1 class="title">
+            <span class="fade-slide">ALL THOSE</span>
+            <span class="fade-slide delay">WHO</span>
+            <span class="fade-slide highlight">WANDER</span>
+        </h1>
+        <p class="subtext">Coming soon</p>
+        <a href="#" class="button">STEAM STORE →</a>
+    </div>
+
     <script>
         window.onload = function() {
             let bg = document.getElementById("background");
-            bg.style.opacity = "0";  // Reset opacity to 0
+            bg.style.opacity = "0";
             setTimeout(() => {
-                bg.style.opacity = "1"; // Fade in again
-            }, 50); // Short delay ensures it triggers even on fast reloads
+                bg.style.opacity = "1";
+            }, 50);
+
+            // Trigger text animations
+            document.querySelectorAll(".fade-slide").forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add("visible");
+                }, 300 * index);
+            });
         };
     </script>
 </body>
