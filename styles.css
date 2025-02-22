@@ -5,6 +5,20 @@
     box-sizing: border-box;
 }
 
+/* Load Custom Font Abuget (For Title Only) */
+@font-face {
+    font-family: 'Abuget';
+    src: url('assets/fonts/abuget.woff2') format('woff2'),
+         url('assets/fonts/abuget.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Use Merriweather for all text except title */
+body, .content {
+    font-family: 'Merriweather', serif;
+}
+
 /* Background Image */
 #background {
     position: fixed;
@@ -27,7 +41,6 @@
     left: 10%;
     text-align: left;
     color: white;
-    font-family: "Merriweather", serif;
     max-width: 50vw; /* Prevents text from spanning too far */
 }
 
@@ -40,9 +53,9 @@
     animation: fadeInUp 1s ease-in-out 0.5s forwards;
 }
 
-/* Title - Left Aligned */
+/* Title - Uses Abuget Font */
 .title {
-    font-family: 'Merriweather', serif;
+    font-family: 'Abuget', sans-serif; /* Custom Font */
     font-size: 4rem;
     font-weight: 300;
     line-height: 1.1;
@@ -113,4 +126,14 @@
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* Page Load Fade-in */
+body {
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+body.loaded {
+    opacity: 1;
 }
