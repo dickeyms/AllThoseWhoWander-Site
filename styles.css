@@ -1,38 +1,40 @@
+/* General Page Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
     text-align: center;
+
+    /* Background Image */
+    background-image: url('assets/images/background.png');
+    background-size: cover;  /* Cover the entire screen */
+    background-position: center;  /* Center the image */
+    background-attachment: fixed; /* Keep background in place when scrolling */
+    background-repeat: no-repeat; /* No tiling */
+
+    /* Ensure full height */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
+/* Header */
 header {
     background-color: #333;
     color: white;
     padding: 20px;
 }
 
+/* Main Content */
 main {
+    flex-grow: 1; /* Makes main content take up remaining space */
     padding: 20px;
 }
 
-body {
-    background-image: url('assets/images/background.png');
-    background-size: cover;  /* Cover the entire screen */
-    background-position: center;  /* Center the image */
-    background-attachment: fixed; /* Keep background in place when scrolling */
-    background-repeat: no-repeat; /* No tiling */
-    height: 100vh; /* Full height */
-    margin: 0; /* Remove default spacing */
-}
-
-
+/* Footer - Sticky Positioning */
 footer {
     background-color: #333;
     color: white;
     padding: 10px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+    text-align: center;
 }
- 
