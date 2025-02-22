@@ -5,16 +5,7 @@
     box-sizing: border-box;
 }
 
-/* Load Custom Font Abuget (For Title Only) */
-@font-face {
-    font-family: 'Abuget';
-    src: url('assets/fonts/Abuget.woff2') format('woff2'),
-         url('assets/fonts/Abuget.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-/* Use Merriweather for all text except title */
+/* Use Merriweather for all text */
 body, .content {
     font-family: 'Merriweather', serif;
 }
@@ -53,35 +44,19 @@ body, .content {
     animation: fadeInUp 1s ease-in-out 0.5s forwards;
 }
 
-/* Title - Uses Abuget Font */
-.title {
-    font-family: 'Abuget', sans-serif; /* Custom Font */
-    font-size: 4rem;
-    font-weight: 300;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.4);
-    -webkit-text-stroke: 0.3px rgba(255, 255, 255, 0.3);
-}
-
-/* Individual Text Animations */
-.fade-slide {
-    display: block;
+/* Title Image */
+.title-image {
+    max-width: 100%;
+    height: auto;
     opacity: 0;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
     transform: translateY(20px);
-    transition: opacity 1s ease, transform 1s ease;
-    text-align: left;
 }
 
+/* Visible State for Fade-in */
 .fade-slide.visible {
     opacity: 1;
     transform: translateY(0);
-}
-
-/* Highlight color for "WANDER" */
-.highlight {
-    color: #61FFD0;
-    font-weight: 300;
 }
 
 /* Subtext (Coming Soon) */

@@ -12,11 +12,10 @@
 
     <div class="content">
         <p class="small-text">MYKD</p>
-        <h1 class="title">
-            <span class="fade-slide">All Those</span>
-            <span class="fade-slide delay">Who</span>
-            <span class="fade-slide highlight">Wander</span>
-        </h1>
+        
+        <!-- Image Title Instead of Text -->
+        <img src="assets/images/titleImage.png" alt="All Those Who Wander" class="title-image fade-slide">
+
         <p class="subtext">Coming soon</p>
         <a href="#" class="button">STEAM STORE →</a>
     </div>
@@ -29,7 +28,7 @@
                 bg.style.opacity = "1";
             }, 300);
 
-            // Trigger text animations
+            // Trigger fade-in animations
             document.querySelectorAll(".fade-slide").forEach((el, index) => {
                 setTimeout(() => {
                     el.classList.add("visible");
