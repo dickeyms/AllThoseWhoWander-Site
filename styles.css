@@ -2,9 +2,9 @@
 body {
     margin: 0;
     padding: 0;
-    height: 100vh; /* Full viewport height */
-    width: 100vw; /* Full viewport width */
-    background: black; /* Prevents flashing */
+    height: 100vh;
+    width: 100vw;
+    background: black;
     overflow: hidden;
 }
 
@@ -20,8 +20,8 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    
-    /* Start fully transparent */
+
+    /* Ensure it resets on refresh */
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
 }

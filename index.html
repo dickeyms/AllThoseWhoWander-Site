@@ -10,9 +10,13 @@
     <div id="background"></div> <!-- Background div for fade-in -->
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.getElementById("background").style.opacity = "1"; // Triggers the fade-in effect
-        });
+        window.onload = function() {
+            let bg = document.getElementById("background");
+            bg.style.opacity = "0";  // Reset opacity to 0
+            setTimeout(() => {
+                bg.style.opacity = "1"; // Fade in again
+            }, 50); // Short delay ensures it triggers even on fast reloads
+        };
     </script>
 </body>
 </html>
