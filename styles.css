@@ -40,7 +40,7 @@ body {
 .title {
     font-family: 'Merriweather', serif; 
     font-size: 4rem;
-    font-weight: 700;  /* Closest to 1.125 */
+    font-weight: 300;
     line-height: 1.1;
     letter-spacing: -0.02em; /* Slightly tighten the text */
     text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.4);
@@ -50,7 +50,7 @@ body {
 /* Highlight color for "WANDER" */
 .highlight {
     color: #61FFD0;
-    font-weight: 700;
+    font-weight: 300;
 }
 
 
