@@ -8,8 +8,8 @@
 /* Load Custom Font Abuget (For Title Only) */
 @font-face {
     font-family: 'Abuget';
-    src: url('assets/fonts/abuget.woff2') format('woff2'),
-         url('assets/fonts/abuget.woff') format('woff');
+    src: url('assets/fonts/Abuget.woff2') format('woff2'),
+         url('assets/fonts/Abuget.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
