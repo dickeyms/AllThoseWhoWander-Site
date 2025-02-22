@@ -1,15 +1,8 @@
-/* Full-screen background */
-body {
+/* General Reset */
+* {
     margin: 0;
     padding: 0;
-    height: 100vh;
-    width: 100vw;
-    background: black;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    box-sizing: border-box;
 }
 
 /* Background Image */
@@ -17,34 +10,59 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('assets/images/background.png'); /* Ensure path is correct */
+    width: 100vw;
+    height: 100vh;
+    background-image: url('assets/images/background.png'); /* Ensure correct path */
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
     background-attachment: fixed;
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
 }
 
-/* Content Container */
+/* Content Container - Left Align */
 .content {
     position: absolute;
-    z-index: 2;
+    top: 15%;
+    left: 10%;
+    text-align: left;
     color: white;
     font-family: "Merriweather", serif;
+    max-width: 50vw; /* Prevents text from spanning too far */
 }
 
-/* Title */
+/* Small Text (MYKD) */
+.small-text {
+    font-size: 1rem;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeInUp 1s ease-in-out 0.5s forwards;
+}
+
+/* Title - Left Aligned */
 .title {
-    font-family: 'Merriweather', serif; 
+    font-family: 'Merriweather', serif;
     font-size: 4rem;
     font-weight: 300;
     line-height: 1.1;
-    letter-spacing: -0.02em; /* Slightly tighten the text */
+    letter-spacing: -0.02em;
     text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.4);
-    -webkit-text-stroke: 0.3px rgba(255, 255, 255, 0.3); /* Light outline effect */
+    -webkit-text-stroke: 0.3px rgba(255, 255, 255, 0.3);
+}
+
+/* Individual Text Animations */
+.fade-slide {
+    display: block;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+    text-align: left;
+}
+
+.fade-slide.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Highlight color for "WANDER" */
@@ -53,44 +71,15 @@ body {
     font-weight: 300;
 }
 
-
-/* Small Text (MYKD) */
-.small-text {
-    font-family: 'Merriweather', serif;
-    font-size: 1rem;
-    letter-spacing: 0.2rem;
-    text-transform: uppercase;
-    opacity: 0;
-    animation: fadeInUp 1s ease-in-out 0.5s forwards;
-}
-
-
-/* Animations for each text segment */
-.fade-slide {
-    display: block;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1s ease, transform 1s ease;
-}
-
-.fade-slide.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Delayed text animation */
-.delay {
-    transition-delay: 0.3s;
-}
-
-/* Subtext */
+/* Subtext (Coming Soon) */
 .subtext {
     font-size: 1.2rem;
     opacity: 0;
     animation: fadeInUp 1.5s ease-in-out 1.5s forwards;
+    text-align: left;
 }
 
-/* Button */
+/* Steam Store Button */
 .button {
     display: inline-block;
     margin-top: 20px;
@@ -105,18 +94,20 @@ body {
     transition: all 0.3s ease-in-out;
     opacity: 0;
     animation: fadeInUp 1.5s ease-in-out 2s forwards;
+    text-align: center;
 }
 
+/* Button Hover Effect */
 .button:hover {
     background: #61FFD0;
     color: black;
 }
 
-/* Fade-in & Slide-up Animation */
+/* Fade-in Animation */
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(30px);
     }
     to {
         opacity: 1;
