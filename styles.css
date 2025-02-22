@@ -1,40 +1,21 @@
-/* General Page Styles */
+/* Full-screen background */
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    text-align: center;
-
-    /* Background Image */
-    background-image: url('assets/images/background.png');
-    background-size: cover;  /* Cover the entire screen */
+    height: 100vh; /* Full viewport height */
+    width: 100vw; /* Full viewport width */
+    background-image: url('assets/images/background.png'); /* Update path if needed */
+    background-size: cover;  /* Cover the entire viewport */
     background-position: center;  /* Center the image */
-    background-attachment: fixed; /* Keep background in place when scrolling */
     background-repeat: no-repeat; /* No tiling */
+    background-attachment: fixed; /* Fixed position */
 
-    /* Ensure full height */
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    /* Fade-in effect */
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
 }
 
-/* Header */
-header {
-    background-color: #333;
-    color: white;
-    padding: 20px;
-}
-
-/* Main Content */
-main {
-    flex-grow: 1; /* Makes main content take up remaining space */
-    padding: 20px;
-}
-
-/* Footer - Sticky Positioning */
-footer {
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    text-align: center;
+/* Hide any content (just in case) */
+body * {
+    display: none;
 }
