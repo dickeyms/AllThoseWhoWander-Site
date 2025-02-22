@@ -4,18 +4,24 @@ body {
     padding: 0;
     height: 100vh; /* Full viewport height */
     width: 100vw; /* Full viewport width */
-    background-image: url('assets/images/background.png'); /* Update path if needed */
-    background-size: cover;  /* Cover the entire viewport */
-    background-position: center;  /* Center the image */
-    background-repeat: no-repeat; /* No tiling */
-    background-attachment: fixed; /* Fixed position */
-
-    /* Fade-in effect */
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out;
+    background: black; /* Prevents flashing */
+    overflow: hidden;
 }
 
-/* Hide any content (just in case) */
-body * {
-    display: none;
+/* Background Image with Fade-in Effect */
+#background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/images/background.png'); /* Ensure this path is correct */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+    /* Start fully transparent */
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
 }

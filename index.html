@@ -7,9 +7,11 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="background"></div> <!-- Background div for fade-in -->
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            document.body.style.opacity = "1"; // Triggers the fade-in effect
+            document.getElementById("background").style.opacity = "1"; // Triggers the fade-in effect
         });
     </script>
 </body>
