@@ -21,6 +21,11 @@ body.loaded {
     opacity: 1;
 }
 
+html, body {
+    overflow-x: hidden; /* Prevents horizontal shifts */
+    width: 100%;
+}
+
 /* Background Image */
 #background {
     position: fixed;
@@ -34,7 +39,10 @@ body.loaded {
     background-attachment: fixed;
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
+    will-change: opacity, transform; /* Optimizes animation */
+    overflow: hidden; /* Prevents unwanted shifts */
 }
+
 
 /* Content Container - Left Align */
 .content {
