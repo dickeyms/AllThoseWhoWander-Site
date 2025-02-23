@@ -85,7 +85,9 @@ body, .content {
     opacity: 0;
     animation: fadeInUp 1.5s ease-in-out 2s forwards;
     text-align: center;
+    white-space: nowrap; /* Prevents text wrapping */
 }
+
 
 /* Button Hover Effect */
 .button:hover {
