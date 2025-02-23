@@ -16,14 +16,16 @@ body {
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
     overflow-x: hidden; /* Prevents unwanted shifts */
-    width: 100%;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
 }
 
 body.loaded {
     opacity: 1;
 }
 
-/* Background Image */
+/* Background Image - Prevents iPhone Shift */
 #background {
     position: fixed;
     top: 0;
@@ -36,13 +38,14 @@ body.loaded {
     background-attachment: fixed;
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
-    will-change: opacity, transform; /* Optimizes animation */
+    will-change: opacity, transform; /* Helps Safari render properly */
 }
 
 /* Fix for iOS Safari shifting issue */
 @supports (-webkit-touch-callout: none) {
     #background {
         background-attachment: scroll; /* Prevents shifting */
+        background-size: 100vw 100vh; /* Ensures full coverage */
     }
 }
 
