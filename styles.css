@@ -41,7 +41,7 @@ body, .content {
     letter-spacing: 0.2rem;
     text-transform: uppercase;
     opacity: 0;
-    animation: fadeInUp 1s ease-in-out 0.5s forwards;
+    animation: fadeInDown 1s ease-in-out 0.5s forwards;
 }
 
 /* Title Image */
@@ -54,6 +54,7 @@ body, .content {
     transform: translateY(20px);
     margin-left: -30px;
     filter: drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.5)); /* Soft shadow */
+    animation: fadeInLeft 1s ease-in-out 1s forwards;
 }
 
 
@@ -67,7 +68,7 @@ body, .content {
 .subtext {
     font-size: 1.2rem;
     opacity: 0;
-    animation: fadeInUp 1.5s ease-in-out 1.5s forwards;
+    animation: fadeInRight 1.5s ease-in-out 1.5s forwards;
     text-align: left;
 }
 
@@ -101,6 +102,41 @@ body, .content {
 }
 
 /* Fade-in Animation */
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
