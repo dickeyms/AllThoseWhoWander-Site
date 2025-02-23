@@ -1,78 +1,34 @@
-/* General Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Use Merriweather for all text */
-body, .content {
-    font-family: 'Merriweather', serif;
-}
-
-/* Background Image */
-#background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-image: url('assets/images/background.png'); /* Ensure correct path */
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out;
-}
-
-/* Content Container - Left Align */
-.content {
-    position: absolute;
-    top: 15%;
-    left: 10%;
-    text-align: left;
-    color: white;
-    max-width: 50vw; /* Prevents text from spanning too far */
-}
-
-/* Small Text (MYKD) */
+/* MYKD (Move from Top to Bottom) */
 .small-text {
     font-size: 1rem;
     letter-spacing: 0.2rem;
     text-transform: uppercase;
     opacity: 0;
-    animation: fadeInDown 1s ease-in-out 0.5s forwards;
+    animation: fadeInDown 1s ease-in-out forwards;
 }
 
-/* Title Image */
+/* Title Image (Move from Right to Left) */
 .title-image {
     max-width: 100%;
     height: auto;
     min-width: 350px;
     opacity: 0;
     transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-    transform: translateY(20px);
+    transform: translateX(50px); /* Start position (Right) */
     margin-left: -30px;
     filter: drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.5)); /* Soft shadow */
-    animation: fadeInLeft 1s ease-in-out 1s forwards;
+    animation: fadeInLeft 1s ease-in-out forwards;
 }
 
-
-/* Visible State for Fade-in */
-.fade-slide.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Subtext (Coming Soon) */
+/* Coming Soon (Move from Left to Right) */
 .subtext {
     font-size: 1.2rem;
     opacity: 0;
-    animation: fadeInRight 1.5s ease-in-out 1.5s forwards;
     text-align: left;
+    animation: fadeInRight 1s ease-in-out forwards;
 }
 
-/* Steam Store Button */
+/* Steam Store Button (Move from Bottom to Top) */
 .button {
     display: inline-block;
     margin-top: 20px;
@@ -86,22 +42,12 @@ body, .content {
     border-radius: 50px;
     transition: all 0.3s ease-in-out;
     opacity: 0;
-    animation: fadeInUp 1.5s ease-in-out 2s forwards;
     text-align: center;
-    white-space: nowrap; /* Prevents text wrapping */
-    width: max-content; /* Ensures the button is only as wide as its text */
-    min-width: 200px; /* Set a minimum width to prevent squeezing */
+    white-space: nowrap;
+    width: max-content;
+    min-width: 200px;
+    animation: fadeInUp 1s ease-in-out forwards;
 }
-
-
-
-/* Button Hover Effect */
-.button:hover {
-    background: #61FFD0;
-    color: black;
-}
-
-/* Fade-in Animation */
 
 /* Animations */
 @keyframes fadeInDown {
@@ -146,14 +92,4 @@ body, .content {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-/* Page Load Fade-in */
-body {
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out;
-}
-
-body.loaded {
-    opacity: 1;
 }
