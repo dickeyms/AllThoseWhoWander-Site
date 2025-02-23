@@ -86,7 +86,10 @@ body, .content {
     animation: fadeInUp 1.5s ease-in-out 2s forwards;
     text-align: center;
     white-space: nowrap; /* Prevents text wrapping */
+    width: max-content; /* Ensures the button is only as wide as its text */
+    min-width: 200px; /* Set a minimum width to prevent squeezing */
 }
+
 
 
 /* Button Hover Effect */
