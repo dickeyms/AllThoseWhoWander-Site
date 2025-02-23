@@ -5,11 +5,6 @@
     box-sizing: border-box;
 }
 
-/* Use Merriweather for all text */
-body, .content {
-    font-family: 'Merriweather', serif;
-}
-
 /* Background Image */
 #background {
     position: fixed;
@@ -44,19 +39,40 @@ body, .content {
     animation: fadeInUp 1s ease-in-out 0.5s forwards;
 }
 
-/* Title Image */
+/* Title Image with Shadow */
 .title-image {
-    max-width: 100%;
+    width: 50vw;  /* 50% of viewport width for better scaling */
+    max-width: 600px;  /* Prevent it from getting too large */
     height: auto;
+    display: block;
     opacity: 0;
     transition: opacity 1s ease-in-out, transform 1s ease-in-out;
     transform: translateY(20px);
+    filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.7)); /* Drop shadow */
 }
 
-/* Visible State for Fade-in */
-.fade-slide.visible {
-    opacity: 1;
-    transform: translateY(0);
+/* Make Image Larger on Desktop */
+@media (min-width: 1024px) {
+    .title-image {
+        width: 60vw;  /* Increase size on bigger screens */
+        max-width: 700px;  /* Keep it from getting too large */
+    }
+}
+
+/* Prevent Shrinking Too Much on Mobile */
+@media (max-width: 768px) {
+    .title-image {
+        width: 80vw; /* Increase width on small screens */
+        max-width: 90%; /* Allow some flexibility */
+    }
+}
+
+/* Prevent Shrinking Too Much on Small Phones */
+@media (max-width: 480px) {
+    .title-image {
+        width: 90vw; /* Make it bigger on very small screens */
+        max-width: 100%; /* Avoid too much shrinking */
+    }
 }
 
 /* Subtext (Coming Soon) */

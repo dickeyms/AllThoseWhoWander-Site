@@ -5,39 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Those Who Wander</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="background"></div> <!-- Background Fade-in -->
 
     <div class="content">
         <p class="small-text">MYKD</p>
-        
-        <!-- Image Title Instead of Text -->
-        <img src="assets/images/titleImage.png" alt="All Those Who Wander" class="title-image fade-slide">
+
+        <!-- Title Image -->
+        <img src="assets/images/titleImage.png" alt="All Those Who Wander" class="title-image">
 
         <p class="subtext">Coming soon</p>
         <a href="#" class="button">STEAM STORE →</a>
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        window.onload = function() {
             // Background Fade-in
             let bg = document.getElementById("background");
+            bg.style.opacity = "0";
             setTimeout(() => {
                 bg.style.opacity = "1";
+            }, 50);
+
+            // Title Image Animation
+            let titleImage = document.querySelector(".title-image");
+            titleImage.style.opacity = "0";
+            setTimeout(() => {
+                titleImage.style.opacity = "1";
+                titleImage.style.transform = "translateY(0)";
             }, 300);
-
-            // Trigger fade-in animations
-            document.querySelectorAll(".fade-slide").forEach((el, index) => {
-                setTimeout(() => {
-                    el.classList.add("visible");
-                }, 500 * index); // Staggered effect
-            });
-
-            // Ensure body fade-in happens after page load
-            document.body.classList.add("loaded");
-        });
+        };
     </script>
 </body>
 </html>
