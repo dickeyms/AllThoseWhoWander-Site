@@ -15,15 +15,12 @@ body {
     background-color: black; /* Ensure black background before fade-in */
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
+    overflow-x: hidden; /* Prevents unwanted shifts */
+    width: 100%;
 }
 
 body.loaded {
     opacity: 1;
-}
-
-html, body {
-    overflow-x: hidden; /* Prevents horizontal shifts */
-    width: 100%;
 }
 
 /* Background Image */
@@ -40,9 +37,14 @@ html, body {
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
     will-change: opacity, transform; /* Optimizes animation */
-    overflow: hidden; /* Prevents unwanted shifts */
 }
 
+/* Fix for iOS Safari shifting issue */
+@supports (-webkit-touch-callout: none) {
+    #background {
+        background-attachment: scroll; /* Prevents shifting */
+    }
+}
 
 /* Content Container - Left Align */
 .content {
