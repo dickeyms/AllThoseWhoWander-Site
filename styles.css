@@ -25,15 +25,15 @@ body.loaded {
     opacity: 1;
 }
 
-/* Background Image - Universal Fix */
+/* Background Image - Ensure Full Vertical Fit */
 #background {
-    position: absolute; /* Change from fixed to absolute */
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-image: url('assets/images/background.png');
-    background-size: cover; /* Keeps the image from zooming in */
+    background-size: cover; /* Default: Cover full screen */
     background-position: center center;
     background-attachment: scroll; /* Prevents Safari zoom issues */
     opacity: 0;
@@ -46,6 +46,21 @@ body.loaded {
     #background {
         background-size: cover; /* Ensure full coverage without zoom */
         background-position: center center; /* Keep consistent alignment */
+    }
+}
+
+/* Adjust Background for Mobile Landscape Mode */
+@media (max-width: 768px) and (orientation: landscape) {
+    #background {
+        background-size: auto 100vh; /* Ensures full height is visible */
+    }
+}
+
+/* Alternative: If you prefer the whole image visible without cropping */
+@media (max-width: 768px) and (orientation: landscape) {
+    #background {
+        background-size: contain; /* Ensures full image is visible */
+        background-repeat: no-repeat;
     }
 }
 
@@ -116,9 +131,22 @@ body.loaded {
     color: black;
 }
 
+/* Mobile Adjustments */
 @media (max-width: 768px) {
     .content {
-        top: 25%; /* Move content lower on mobile */
+        top: 25%;
+        left: 5%;  /* Prevents content from being too far left */
+        max-width: 80vw; /* Gives more space */
+    }
+
+    .title-image {
+        max-width: 80%; /* Ensures the title image scales */
+        min-width: auto; /* Prevents forced width */
+    }
+
+    .button {
+        min-width: 150px; /* Prevents the button from shrinking too much */
+        padding: 10px 20px; /* Adjust padding */
     }
 }
 
