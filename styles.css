@@ -41,10 +41,12 @@ body.loaded {
     will-change: opacity, transform; /* Helps Safari render properly */
 }
 
-/* Fix for iOS Safari shifting issue */
+/* Fix for iOS Safari zooming issue */
 @supports (-webkit-touch-callout: none) {
     #background {
-        background-attachment: scroll; /* Prevents shifting */
+        background-attachment: scroll; /* Prevents Safari zooming effect */
+        background-size: cover; /* Keep cover to match DuckDuckGo view */
+        background-position: top center; /* Adjust positioning */
     }
 }
 
