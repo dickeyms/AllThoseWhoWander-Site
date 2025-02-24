@@ -115,6 +115,23 @@ body.loaded {
     color: black;
 }
 
+@media (max-width: 768px) {
+    .content {
+        top: 30%; /* Move content lower on mobile */
+        left: 5%; /* Adjust alignment if necessary */
+        max-width: 90vw; /* Prevents text from being too squeezed */
+        text-align: center; /* Center content for better alignment */
+    }
+
+    .title-image {
+        margin-left: 0; /* Reset margin to avoid shifting */
+    }
+
+    .button {
+        margin-top: 30px; /* Increase space below the button */
+    }
+}
+
 /* Animations */
 @keyframes fadeInDown {
     from {
