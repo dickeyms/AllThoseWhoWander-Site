@@ -41,6 +41,8 @@
         </ul>
     </nav>
 
+    <!-- Sections Order: Hero, Trailer, Description, Screenshots -->
+    
     <!-- Hero Section -->
     <section id="hero" class="section">
         <div class="content">
@@ -54,7 +56,7 @@
         </div>
     </section>
 
-    <!-- Trailer Section - Firewatch Style -->
+    <!-- Trailer Section -->
     <section id="trailer" class="section">
         <div class="section-content">
             <h2>Experience the Journey</h2>
@@ -71,36 +73,48 @@
             </div>
         </div>
     </section>
+    
+    <!-- Game Description Section -->
+    <section id="description" class="section">
+        <div class="section-content">
+            <div class="description-content">
+                <p>Venture into a vast, open world where nature is both your home and your canvas. Gather materials, create stunning art installations, and uncover remnants of a forgotten past. Tame gentle wildlife, fish in quiet waters, and let the landscape inspire you. No enemies, no rush—just you, your creativity, and the journey ahead.</p>
+            </div>
+        </div>
+    </section>
 
-    <!-- Screenshots Section - Firewatch Grid Style -->
+    <!-- Screenshots Section -->
     <section id="screenshots" class="section">
         <div class="section-content">
             <h2>Explore the World</h2>
             <div class="screenshots-grid">
                 <!-- Replace with your actual screenshots -->
-                <div class="screenshot-item">
+                <div class="screenshot-item" onclick="openLightbox(0)">
                     <img src="assets/images/screenshot1.png" alt="Screenshot 1">
                 </div>
-                <div class="screenshot-item">
+                <div class="screenshot-item" onclick="openLightbox(1)">
                     <img src="assets/images/screenshot2.png" alt="Screenshot 2">
                 </div>
-                <div class="screenshot-item">
+                <div class="screenshot-item" onclick="openLightbox(2)">
                     <img src="assets/images/screenshot3.png" alt="Screenshot 3">
                 </div>
                 <!-- Add more screenshots as needed -->
             </div>
         </div>
     </section>
-
-    <!-- Game Description Section -->
-    <section id="description" class="section">
-        <div class="section-content">
-            <h2>About the Game</h2>
-            <div class="description-content">
-                <p>Venture into a vast, open world where nature is both your home and your canvas. Gather materials, create stunning art installations, and uncover remnants of a forgotten past. Tame gentle wildlife, fish in quiet waters, and let the landscape inspire you. No enemies, no rush—just you, your creativity, and the journey ahead.</p>
+    
+    <!-- Lightbox for Screenshots -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn" onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-content">
+            <div class="lightbox-controls">
+                <button class="prev-btn" onclick="changeSlide(-1)">❮</button>
+                <button class="next-btn" onclick="changeSlide(1)">❯</button>
             </div>
+            <div class="slide-container"></div>
+            <div class="slide-counter"></div>
         </div>
-    </section>
+    </div>
 
     <!-- Footer Section -->
     <footer>
@@ -184,6 +198,7 @@
         
         function prepareSlides() {
             const slideContainer = document.querySelector('.slide-container');
+            if (!slideContainer) return; // Safety check
             
             // Clear existing content
             slideContainer.innerHTML = '';
@@ -202,6 +217,8 @@
         
         function openLightbox(index) {
             const lightbox = document.getElementById('lightbox');
+            if (!lightbox) return; // Safety check
+            
             currentSlide = index;
             
             // Show the current slide
@@ -224,6 +241,8 @@
         
         function closeLightbox() {
             const lightbox = document.getElementById('lightbox');
+            if (!lightbox) return; // Safety check
+            
             lightbox.classList.remove('active');
             
             // Re-enable page scrolling
@@ -235,6 +254,7 @@
         
         function changeSlide(direction) {
             const slides = document.querySelectorAll('.slide-container img');
+            if (!slides.length) return; // Safety check
             
             // Hide current slide
             slides[currentSlide].className = '';
@@ -250,6 +270,8 @@
         
         function updateCounter() {
             const counter = document.querySelector('.slide-counter');
+            if (!counter) return; // Safety check
+            
             counter.textContent = `${currentSlide + 1} / ${screenshots.length}`;
         }
         

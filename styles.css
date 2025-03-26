@@ -1,20 +1,4 @@
-/* Background Dimming Overlay */
-#dimming-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, 
-        rgba(0, 0, 0, 0) 0%, 
-        rgba(0, 0, 0, 0.4) 30%, 
-        rgba(0, 0, 0, 0.6) 60%, 
-        rgba(0, 0, 0, 0.8) 100%);
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    pointer-events: none; /* Allows clicks to pass through */
-    z-index: -1; /* Between background and content */
-}/* General Reset */
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
@@ -56,7 +40,7 @@ body.loaded {
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
     will-change: opacity, transform;
-    z-index: -1; /* Ensure background stays behind content */
+    z-index: -2; /* Ensure background stays behind content and overlay */
 }
 
 /* Fix for iOS Safari */
@@ -66,6 +50,24 @@ body.loaded {
         background-size: cover; /* Ensure full coverage without zoom */
         background-position: center center; /* Keep consistent alignment */
     }
+}
+
+/* Background Dimming Overlay */
+#dimming-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, 
+        rgba(0, 0, 0, 0) 0%, 
+        rgba(0, 0, 0, 0.4) 30%, 
+        rgba(0, 0, 0, 0.6) 60%, 
+        rgba(0, 0, 0, 0.8) 100%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none; /* Allows clicks to pass through */
+    z-index: -1; /* Between background and content */
 }
 
 /* Main Navigation */
@@ -169,17 +171,6 @@ body.loaded {
     animation: fadeInLeft 1s ease-in-out forwards;
 }
 
-/* Tagline - New addition */
-.tagline {
-    font-size: 1.4rem;
-    line-height: 1.6;
-    margin: 20px 0;
-    max-width: 600px;
-    opacity: 0;
-    animation: fadeInRight 1s ease-in-out 0.2s forwards;
-    color: #f0f0f0; /* Slightly off-white for better readability */
-}
-
 /* Coming Soon (Subtext) */
 .subtext {
     font-size: 1.2rem;
@@ -215,8 +206,6 @@ body.loaded {
     background: #61FFD0;
     color: black;
 }
-
-/* Scroll Indicator - Removed */
 
 /* Section Headers */
 h2 {
@@ -260,11 +249,32 @@ h2:after {
     height: 100%;
 }
 
-/* Trailer Description Removed */
+/* Game Description Section */
+#description {
+    background-color: transparent;
+    min-height: auto; /* Allow for shorter height */
+    padding: 40px 0; /* Reduced padding for closer spacing */
+}
 
-/* Screenshots Section - With clickable items */
+.description-content {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.description-content p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: #f0f0f0;
+    margin-bottom: 20px;
+}
+
+/* Screenshots Section */
 #screenshots {
     background-color: transparent;
+    padding-top: 40px; /* Reduced top padding */
 }
 
 .screenshots-grid {
@@ -401,30 +411,6 @@ h2:after {
     to { opacity: 1; }
 }
 
-/* Remove caption styles */
-
-/* Game Description Section */
-#description {
-    background-color: transparent;
-    min-height: auto; /* Allow for shorter height */
-    padding-top: 0;
-}
-
-.description-content {
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 0 20px;
-}
-
-.description-content p {
-    font-size: 1.4rem;
-    line-height: 1.6;
-    color: #f0f0f0;
-    margin-bottom: 20px;
-}
-
 /* Footer Styling */
 footer {
     width: 100%;
@@ -467,7 +453,10 @@ footer {
         max-width: 70vw;
     }
     
-    .screenshots-grid, 
+    .screenshots-grid {
+        grid-template-columns: 1fr; /* Single column on tablets */
+    }
+    
     .description-content {
         padding: 0 20px;
     }
@@ -495,7 +484,12 @@ footer {
         font-size: 2rem;
     }
     
-    .tagline {
+    .trailer-container {
+        width: 90%; /* Fuller width on mobile */
+        padding-bottom: 50.625%; /* Maintain aspect ratio */
+    }
+    
+    .description-content p {
         font-size: 1.2rem;
     }
     
@@ -550,5 +544,3 @@ footer {
         transform: translateY(0);
     }
 }
-
-/* Bounce animation removed */
