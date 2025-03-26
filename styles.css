@@ -52,12 +52,49 @@ body.loaded {
     }
 }
 
+/* Main Navigation */
+.main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 30px;
+}
+
+.main-nav li {
+    margin: 0 15px;
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: #61FFD0;
+}
+
 /* Section Styling */
 .section {
     min-height: 100vh;
     width: 100%;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     position: relative;
     opacity: 0;
@@ -72,25 +109,29 @@ body.loaded {
 }
 
 #hero {
+    height: 100vh;
     padding-top: 0;
     padding-bottom: 0;
+    justify-content: flex-start; /* Align content to the left */
 }
 
 .section-content {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 80px 0; /* Increased vertical padding */
 }
 
-/* Hero Section Content - Left Align */
+/* Hero Section Content */
 .content {
     position: relative;
     text-align: left;
     color: white;
     max-width: 50vw; /* Prevents text from spanning too far */
+    margin-top: 15vh; /* Position content lower */
 }
 
-/* Small Text (MYKD) - Moves from Top to Bottom */
+/* Small Text (MYKD) */
 .small-text {
     font-size: 1rem;
     letter-spacing: 0.2rem;
@@ -99,7 +140,7 @@ body.loaded {
     animation: fadeInDown 1s ease-in-out forwards;
 }
 
-/* Title Image - Moves from Right to Left */
+/* Title Image */
 .title-image {
     max-width: 100%;
     height: auto;
@@ -112,15 +153,26 @@ body.loaded {
     animation: fadeInLeft 1s ease-in-out forwards;
 }
 
-/* Coming Soon (Subtext) - Moves from Left to Right */
+/* Tagline - New addition */
+.tagline {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    margin: 20px 0;
+    max-width: 600px;
+    opacity: 0;
+    animation: fadeInRight 1s ease-in-out 0.2s forwards;
+}
+
+/* Coming Soon (Subtext) */
 .subtext {
     font-size: 1.2rem;
     opacity: 0;
     text-align: left;
-    animation: fadeInRight 1s ease-in-out forwards;
+    margin-top: 10px;
+    animation: fadeInRight 1s ease-in-out 0.4s forwards;
 }
 
-/* Steam Store Button - Moves from Bottom to Top */
+/* Steam Store Button */
 .button {
     display: inline-block;
     margin-top: 20px;
@@ -134,7 +186,7 @@ body.loaded {
     border-radius: 50px;
     transition: all 0.3s ease-in-out;
     opacity: 0;
-    animation: fadeInUp 1s ease-in-out forwards;
+    animation: fadeInUp 1s ease-in-out 0.6s forwards;
     text-align: center;
     white-space: nowrap; /* Prevents text wrapping */
     width: max-content; /* Ensures the button is only as wide as its text */
@@ -192,7 +244,7 @@ h2:after {
     background-color: #61FFD0;
 }
 
-/* Trailer Section */
+/* Trailer Section - Firewatch Style */
 #trailer {
     background-color: rgba(0, 0, 0, 0.5);
 }
@@ -205,6 +257,7 @@ h2:after {
     overflow: hidden;
     border-radius: 8px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    margin-bottom: 30px; /* Space below trailer */
 }
 
 .trailer-container iframe {
@@ -215,80 +268,75 @@ h2:after {
     height: 100%;
 }
 
-/* Screenshots Section */
+.trailer-description {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+/* Screenshots Section - Firewatch Grid Style */
 #screenshots {
     background-color: rgba(0, 0, 0, 0.3);
 }
 
-.slideshow-container {
+.screenshots-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on desktop */
+    gap: 30px;
     width: 100%;
+}
+
+.screenshot-item {
     position: relative;
-    margin: 0 auto;
+    transition: transform 0.3s ease;
 }
 
-.slideshow-images {
-    width: 100%;
-    position: relative;
+.screenshot-item:hover {
+    transform: translateY(-5px);
 }
 
-.slide {
-    display: none;
-    width: 100%;
-}
-
-.slide img {
+.screenshot-item img {
     width: 100%;
     height: auto;
     border-radius: 8px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s ease;
+}
+
+.screenshot-item:hover img {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
 .caption {
     padding: 15px 0;
     font-size: 1.1rem;
-    text-align: center;
     color: #ccc;
 }
 
-.slideshow-controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
+/* Features Section */
+#features {
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
-.prev-btn, .next-btn {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 2rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
 }
 
-.prev-btn:hover, .next-btn:hover {
+.feature-item h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
     color: #61FFD0;
 }
 
-.slideshow-dots {
-    display: flex;
-    justify-content: center;
-    margin: 0 20px;
-}
-
-.dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: #555;
-    margin: 0 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: none;
-}
-
-.dot.active, .dot:hover {
-    background-color: #61FFD0;
+.feature-item p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #ccc;
 }
 
 /* Footer Styling */
@@ -322,24 +370,47 @@ footer {
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+    .section-content {
+        padding: 60px 20px;
+    }
+}
+
 @media (max-width: 1024px) {
     .content {
         max-width: 70vw;
+    }
+    
+    .screenshots-grid, 
+    .features-grid {
+        grid-template-columns: 1fr; /* Switch to single column */
     }
 }
 
 @media (max-width: 768px) {
     .content {
         max-width: 90vw;
-        top: 25%; /* Move content lower on mobile */
+        margin-top: 25vh; /* Move content lower on mobile */
     }
     
-    .section {
-        padding: 80px 5%;
+    .main-nav {
+        padding: 10px;
+    }
+    
+    .main-nav ul {
+        padding: 8px 15px;
+    }
+    
+    .main-nav li {
+        margin: 0 10px;
     }
     
     h2 {
         font-size: 2rem;
+    }
+    
+    .tagline {
+        font-size: 1.2rem;
     }
     
     .footer-content {
