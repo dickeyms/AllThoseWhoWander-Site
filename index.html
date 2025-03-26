@@ -31,15 +31,84 @@
 <body>
     <div id="background"></div> <!-- Background Fade-in -->
 
-    <div class="content">
-        <p class="small-text">MYKD</p>
-        
-        <!-- Image Title Instead of Text -->
-        <img src="assets/images/titleImage.png" alt="All Those Who Wander" class="title-image fade-slide">
+    <!-- Hero Section -->
+    <section id="hero" class="section">
+        <div class="content">
+            <p class="small-text">MYKD</p>
+            
+            <!-- Image Title Instead of Text -->
+            <img src="assets/images/titleImage.png" alt="All Those Who Wander" class="title-image fade-slide">
 
-        <p class="subtext">Coming soon</p>
-        <a href="#" class="button">STEAM STORE →</a>
-    </div>
+            <p class="subtext">Coming soon</p>
+            <a href="#" class="button">STEAM STORE →</a>
+            
+            <!-- Scroll Down Indicator -->
+            <div class="scroll-indicator">
+                <p>Scroll for Trailer</p>
+                <div class="arrow-down"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trailer Section -->
+    <section id="trailer" class="section">
+        <div class="section-content">
+            <h2>Experience the Journey</h2>
+            <div class="trailer-container">
+                <iframe 
+                    width="100%" 
+                    height="100%" 
+                    src="https://www.youtube.com/embed/VoiSJieCxT0?si=TV4xzM2RlNIbpTel" 
+                    title="All Those Who Wander - Official Trailer" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section id="screenshots" class="section">
+        <div class="section-content">
+            <h2>Explore the World</h2>
+            <div class="slideshow-container">
+                <div class="slideshow-images">
+                    <!-- Replace with your actual screenshots -->
+                    <div class="slide">
+                        <img src="assets/images/screenshot1.png" alt="Screenshot 1">
+                        <div class="caption">Discover natural art installations scattered throughout the world</div>
+                    </div>
+                    <div class="slide">
+                        <img src="assets/images/screenshot2.png" alt="Screenshot 2">
+                        <div class="caption">Craft unique items using resources gathered on your journey</div>
+                    </div>
+                    <div class="slide">
+                        <img src="assets/images/screenshot3.png" alt="Screenshot 3">
+                        <div class="caption">Experience dynamic weather and time systems</div>
+                    </div>
+                    <!-- Add more slides as needed -->
+                </div>
+                <div class="slideshow-controls">
+                    <button class="prev-btn">←</button>
+                    <div class="slideshow-dots"></div>
+                    <button class="next-btn">→</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 All Those Who Wander</p>
+            <div class="social-links">
+                <a href="#" class="social-link">Twitter</a>
+                <a href="#" class="social-link">Discord</a>
+                <a href="#" class="social-link">YouTube</a>
+            </div>
+        </div>
+    </footer>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -56,7 +125,94 @@
 
             // Ensure body fade-in happens after page load
             document.body.classList.add("loaded");
+            
+            // Initialize slideshow
+            initSlideshow();
+            
+            // Set up smooth scrolling for internal links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Reveal sections on scroll
+            window.addEventListener('scroll', revealSections);
+            revealSections(); // Initial check
         });
+        
+        // Slideshow functionality
+        function initSlideshow() {
+            const slides = document.querySelectorAll('.slide');
+            const dotsContainer = document.querySelector('.slideshow-dots');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            let currentSlide = 0;
+            
+            // Create dots for each slide
+            slides.forEach((_, idx) => {
+                const dot = document.createElement('button');
+                dot.classList.add('dot');
+                dot.setAttribute('aria-label', `Go to slide ${idx + 1}`);
+                dot.addEventListener('click', () => goToSlide(idx));
+                dotsContainer.appendChild(dot);
+            });
+            
+            // Set initial slide
+            updateSlideshow();
+            
+            // Navigation buttons
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+            
+            function updateSlideshow() {
+                slides.forEach((slide, idx) => {
+                    slide.style.display = idx === currentSlide ? 'block' : 'none';
+                });
+                
+                // Update active dot
+                document.querySelectorAll('.dot').forEach((dot, idx) => {
+                    dot.classList.toggle('active', idx === currentSlide);
+                });
+            }
+            
+            function goToSlide(idx) {
+                currentSlide = idx;
+                updateSlideshow();
+            }
+            
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                updateSlideshow();
+            }
+            
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                updateSlideshow();
+            }
+            
+            // Auto advance slides every 5 seconds
+            setInterval(nextSlide, 5000);
+        }
+        
+        // Reveal sections as user scrolls
+        function revealSections() {
+            const sections = document.querySelectorAll('.section');
+            const windowHeight = window.innerHeight;
+            
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const sectionBottom = section.getBoundingClientRect().bottom;
+                
+                // Check if section is partially visible in viewport
+                if (sectionTop < windowHeight * 0.8 && sectionBottom > 0) {
+                    section.classList.add('visible');
+                }
+            });
+        }
     </script>
 </body>
 </html>

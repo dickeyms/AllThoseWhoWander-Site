@@ -8,6 +8,7 @@
 /* Use Merriweather for all text */
 body, .content {
     font-family: 'Merriweather', serif;
+    color: white;
 }
 
 /* Fade-in from Black */
@@ -16,7 +17,7 @@ body {
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
     overflow-x: hidden; /* Prevents unwanted shifts */
-    width: 100vw;
+    width: 100%;
     margin: 0;
     padding: 0;
 }
@@ -27,7 +28,7 @@ body.loaded {
 
 /* Background Image - Universal Fix */
 #background {
-    position: absolute; /* Change from fixed to absolute */
+    position: fixed; /* Keep fixed for parallax effect */
     top: 0;
     left: 0;
     width: 100%;
@@ -35,25 +36,55 @@ body.loaded {
     background-image: url('assets/images/background.png');
     background-size: cover; /* Keeps the image from zooming in */
     background-position: center center;
-    background-attachment: scroll; /* Prevents Safari zoom issues */
+    background-attachment: fixed; /* Creates parallax effect */
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
     will-change: opacity, transform;
+    z-index: -1; /* Ensure background stays behind content */
 }
 
 /* Fix for iOS Safari */
 @supports (-webkit-touch-callout: none) {
     #background {
+        background-attachment: scroll; /* Prevents Safari zoom issues */
         background-size: cover; /* Ensure full coverage without zoom */
         background-position: center center; /* Keep consistent alignment */
     }
 }
 
-/* Content Container - Left Align */
+/* Section Styling */
+.section {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    padding: 0 5%;
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#hero {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.section-content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Hero Section Content - Left Align */
 .content {
-    position: absolute;
-    top: 15%;
-    left: 10%;
+    position: relative;
     text-align: left;
     color: white;
     max-width: 50vw; /* Prevents text from spanning too far */
@@ -116,9 +147,205 @@ body.loaded {
     color: black;
 }
 
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    animation: fadeInUp 1s ease-in-out 1.5s forwards;
+}
+
+.scroll-indicator p {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    letter-spacing: 0.1rem;
+}
+
+.arrow-down {
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    border-right: 2px solid #61FFD0;
+    border-bottom: 2px solid #61FFD0;
+    transform: rotate(45deg);
+    animation: bounce 2s infinite;
+}
+
+/* Section Headers */
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    position: relative;
+    display: inline-block;
+}
+
+h2:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 50px;
+    height: 3px;
+    background-color: #61FFD0;
+}
+
+/* Trailer Section */
+#trailer {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.trailer-container {
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.trailer-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Screenshots Section */
+#screenshots {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.slideshow-container {
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+}
+
+.slideshow-images {
+    width: 100%;
+    position: relative;
+}
+
+.slide {
+    display: none;
+    width: 100%;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.caption {
+    padding: 15px 0;
+    font-size: 1.1rem;
+    text-align: center;
+    color: #ccc;
+}
+
+.slideshow-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.prev-btn, .next-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    color: #61FFD0;
+}
+
+.slideshow-dots {
+    display: flex;
+    justify-content: center;
+    margin: 0 20px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #555;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.dot.active, .dot:hover {
+    background-color: #61FFD0;
+}
+
+/* Footer Styling */
+footer {
+    width: 100%;
+    padding: 40px 5%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+}
+
+.social-link {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-link:hover {
+    color: #61FFD0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .content {
+        max-width: 70vw;
+    }
+}
+
 @media (max-width: 768px) {
     .content {
+        max-width: 90vw;
         top: 25%; /* Move content lower on mobile */
+    }
+    
+    .section {
+        padding: 80px 5%;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
     }
 }
 
@@ -164,5 +391,17 @@ body.loaded {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: rotate(45deg) translateY(0);
+    }
+    40% {
+        transform: rotate(45deg) translateY(-10px);
+    }
+    60% {
+        transform: rotate(45deg) translateY(-5px);
     }
 }
