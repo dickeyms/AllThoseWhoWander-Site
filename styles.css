@@ -70,35 +70,35 @@ body.loaded {
     z-index: -1; /* Between background and content */
 }
 
-/* Main Navigation */
+/* Main Navigation - Top Right Style */
 .main-nav {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px;
+    top: 20px;
+    right: 20px;
+    width: auto;
+    padding: 0;
     z-index: 1000;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
 }
 
 .main-nav ul {
     display: flex;
     list-style: none;
     background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px 20px;
-    border-radius: 30px;
+    padding: 8px 15px;
+    border-radius: 20px;
 }
 
 .main-nav li {
-    margin: 0 15px;
+    margin: 0 10px;
 }
 
 .main-nav a {
     color: white;
     text-decoration: none;
     font-size: 0.9rem;
-    letter-spacing: 0.1rem;
+    letter-spacing: 0.05rem;
     text-transform: uppercase;
     transition: color 0.3s ease;
 }
@@ -469,19 +469,16 @@ footer {
     }
     
     .main-nav {
-        padding: 10px;
+        top: 10px;
+        right: 10px;
     }
     
     .main-nav ul {
-        padding: 8px 15px;
+        padding: 6px 12px;
     }
     
     .main-nav li {
-        margin: 0 10px;
-    }
-    
-    h2 {
-        font-size: 2rem;
+        margin: 0 8px;
     }
     
     .trailer-container {
