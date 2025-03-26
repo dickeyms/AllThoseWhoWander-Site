@@ -14,9 +14,9 @@
     font-display: swap; /* Ensures text remains visible during font loading */
 }
 
-/* Use Merriweather for all text */
+/* Use DK Lemon as the primary font for most text */
 body, .content {
-    font-family: 'Merriweather', serif;
+    font-family: 'DK Lemon', serif;
     color: white;
 }
 
@@ -139,7 +139,7 @@ body.loaded {
     animation: fadeInDown 1s ease-in-out forwards;
 }
 
-/* Title Image */
+/* Title Image - Keep original font */
 .title-image {
     max-width: 100%;
     height: auto;
@@ -150,6 +150,7 @@ body.loaded {
     margin-left: 0; /* Removed negative margin that could cause issues */
     filter: drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.5)); /* Soft shadow */
     animation: fadeInLeft 1s ease-in-out forwards;
+    /* Title image uses its own font, not DK Lemon */
 }
 
 @media (min-width: 769px) {
@@ -253,7 +254,6 @@ h2:after {
 }
 
 .description-content p {
-    font-family: 'DK Lemon', 'Merriweather', serif;
     font-size: 1.4rem;
     line-height: 1.6;
     color: #f0f0f0;
