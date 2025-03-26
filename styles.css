@@ -161,6 +161,7 @@ body.loaded {
     max-width: 600px;
     opacity: 0;
     animation: fadeInRight 1s ease-in-out 0.2s forwards;
+    color: #f0f0f0; /* Slightly off-white for better readability */
 }
 
 /* Coming Soon (Subtext) */
@@ -199,32 +200,7 @@ body.loaded {
     color: black;
 }
 
-/* Scroll Indicator */
-.scroll-indicator {
-    position: absolute;
-    bottom: 40px;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    opacity: 0;
-    animation: fadeInUp 1s ease-in-out 1.5s forwards;
-}
-
-.scroll-indicator p {
-    font-size: 0.9rem;
-    margin-bottom: 10px;
-    letter-spacing: 0.1rem;
-}
-
-.arrow-down {
-    width: 30px;
-    height: 30px;
-    margin: 0 auto;
-    border-right: 2px solid #61FFD0;
-    border-bottom: 2px solid #61FFD0;
-    transform: rotate(45deg);
-    animation: bounce 2s infinite;
-}
+/* Scroll Indicator - Removed */
 
 /* Section Headers */
 h2 {
@@ -244,20 +220,20 @@ h2:after {
     background-color: #61FFD0;
 }
 
-/* Trailer Section - Firewatch Style */
+/* Trailer Section - Smaller Size */
 #trailer {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: transparent;
 }
 
 .trailer-container {
-    width: 100%;
+    width: 75%;
     height: 0;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    padding-bottom: 42.1875%; /* 75% of 56.25% for smaller 16:9 ratio */
     position: relative;
     overflow: hidden;
     border-radius: 8px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    margin-bottom: 30px; /* Space below trailer */
+    margin: 0 auto 30px; /* Centered with space below */
 }
 
 .trailer-container iframe {
@@ -277,9 +253,9 @@ h2:after {
     color: #ccc;
 }
 
-/* Screenshots Section - Firewatch Grid Style */
+/* Screenshots Section - Without Background Tint */
 #screenshots {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: transparent;
 }
 
 .screenshots-grid {
@@ -316,9 +292,9 @@ h2:after {
     color: #ccc;
 }
 
-/* Features Section */
+/* Features Section - Without Background Tint */
 #features {
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: transparent;
 }
 
 .features-grid {
@@ -465,14 +441,4 @@ footer {
     }
 }
 
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: rotate(45deg) translateY(0);
-    }
-    40% {
-        transform: rotate(45deg) translateY(-10px);
-    }
-    60% {
-        transform: rotate(45deg) translateY(-5px);
-    }
-}
+/* Bounce animation removed */
