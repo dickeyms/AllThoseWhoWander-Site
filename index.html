@@ -30,6 +30,7 @@
 </head>
 <body>
     <div id="background"></div> <!-- Background Fade-in -->
+    <div id="dimming-overlay"></div> <!-- Background dimming overlay -->
 
     <!-- Main Navigation -->
     <nav class="main-nav">
@@ -139,13 +140,14 @@
                 });
             });
             
-            // Reveal sections on scroll
-            window.addEventListener('scroll', revealSections);
-            revealSections(); // Initial check
+            // Reveal sections on scroll and handle dimming overlay
+            window.addEventListener('scroll', handleScroll);
+            handleScroll(); // Initial check
         });
         
-        // Reveal sections as user scrolls
-        function revealSections() {
+        // Handle scroll effects
+        function handleScroll() {
+            // Reveal sections
             const sections = document.querySelectorAll('.section');
             const windowHeight = window.innerHeight;
             
@@ -158,6 +160,14 @@
                     section.classList.add('visible');
                 }
             });
+            
+            // Handle dimming overlay
+            const scrollPosition = window.scrollY;
+            const totalHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercentage = Math.min(scrollPosition / (totalHeight * 0.5), 1);
+            
+            const dimmingOverlay = document.getElementById('dimming-overlay');
+            dimmingOverlay.style.opacity = scrollPercentage;
         }
     </script>
 </body>
