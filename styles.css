@@ -244,14 +244,7 @@ h2:after {
     height: 100%;
 }
 
-.trailer-description {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-    font-size: 1.2rem;
-    line-height: 1.6;
-    color: #ccc;
-}
+/* Trailer Description Removed */
 
 /* Screenshots Section - Without Background Tint */
 #screenshots {
@@ -286,33 +279,25 @@ h2:after {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
-.caption {
-    padding: 15px 0;
-    font-size: 1.1rem;
-    color: #ccc;
-}
+/* Remove caption styles */
 
-/* Features Section - Without Background Tint */
-#features {
+/* Game Description Section */
+#description {
     background-color: transparent;
 }
 
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
+.description-content {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
 }
 
-.feature-item h3 {
+.description-content p {
     font-size: 1.4rem;
-    margin-bottom: 15px;
-    color: #61FFD0;
-}
-
-.feature-item p {
-    font-size: 1.1rem;
     line-height: 1.6;
-    color: #ccc;
+    color: #f0f0f0;
+    margin-bottom: 20px;
 }
 
 /* Footer Styling */
@@ -358,8 +343,8 @@ footer {
     }
     
     .screenshots-grid, 
-    .features-grid {
-        grid-template-columns: 1fr; /* Switch to single column */
+    .description-content {
+        padding: 0 20px;
     }
 }
 
