@@ -262,7 +262,7 @@ h2:after {
 
 /* Trailer Description Removed */
 
-/* Screenshots Section - Without Background Tint */
+/* Screenshots Section - With clickable items */
 #screenshots {
     background-color: transparent;
 }
@@ -277,6 +277,7 @@ h2:after {
 .screenshot-item {
     position: relative;
     transition: transform 0.3s ease;
+    cursor: pointer; /* Show pointer cursor on hover */
 }
 
 .screenshot-item:hover {
@@ -295,11 +296,118 @@ h2:after {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
+/* Lightbox Styling */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.9);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+
+.lightbox-content {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.slide-container {
+    position: relative;
+    width: 100%;
+}
+
+.slide-container img {
+    width: 100%;
+    height: auto;
+    max-height: 85vh;
+    object-fit: contain;
+    display: none;
+}
+
+.slide-container img.active {
+    display: block;
+    animation: fadeIn 0.3s;
+}
+
+.lightbox-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
+}
+
+.prev-btn, .next-btn {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin: 0 20px;
+    transition: background-color 0.3s;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    background: rgba(97, 255, 208, 0.7);
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    color: white;
+    font-size: 2.5rem;
+    cursor: pointer;
+    z-index: 10;
+    transition: color 0.3s;
+}
+
+.close-btn:hover {
+    color: #61FFD0;
+}
+
+.slide-counter {
+    position: absolute;
+    bottom: -30px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 1rem;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 /* Remove caption styles */
 
 /* Game Description Section */
 #description {
     background-color: transparent;
+    min-height: auto; /* Allow for shorter height */
+    padding-top: 0;
 }
 
 .description-content {
@@ -307,6 +415,7 @@ h2:after {
     max-width: 900px;
     margin: 0 auto;
     text-align: center;
+    padding: 0 20px;
 }
 
 .description-content p {

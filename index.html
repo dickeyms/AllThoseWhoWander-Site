@@ -140,7 +140,10 @@
                 });
             });
             
-            // Reveal sections on scroll and handle dimming overlay
+            // Prepare lightbox slides
+            prepareSlides();
+            
+            // Handle scroll effects
             window.addEventListener('scroll', handleScroll);
             handleScroll(); // Initial check
         });
@@ -168,6 +171,96 @@
             
             const dimmingOverlay = document.getElementById('dimming-overlay');
             dimmingOverlay.style.opacity = scrollPercentage;
+        }
+        
+        // Lightbox functionality
+        let currentSlide = 0;
+        const screenshots = [
+            'assets/images/screenshot1.png',
+            'assets/images/screenshot2.png',
+            'assets/images/screenshot3.png'
+            // Add more screenshots as needed
+        ];
+        
+        function prepareSlides() {
+            const slideContainer = document.querySelector('.slide-container');
+            
+            // Clear existing content
+            slideContainer.innerHTML = '';
+            
+            // Create slide images
+            screenshots.forEach((src, index) => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = `Screenshot ${index + 1}`;
+                img.className = index === 0 ? 'active' : '';
+                slideContainer.appendChild(img);
+            });
+            
+            updateCounter();
+        }
+        
+        function openLightbox(index) {
+            const lightbox = document.getElementById('lightbox');
+            currentSlide = index;
+            
+            // Show the current slide
+            const slides = document.querySelectorAll('.slide-container img');
+            slides.forEach((slide, idx) => {
+                slide.className = idx === currentSlide ? 'active' : '';
+            });
+            
+            updateCounter();
+            
+            // Display the lightbox
+            lightbox.classList.add('active');
+            
+            // Prevent page scrolling when lightbox is open
+            document.body.style.overflow = 'hidden';
+            
+            // Add keyboard controls
+            document.addEventListener('keydown', handleKeyPress);
+        }
+        
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            
+            // Re-enable page scrolling
+            document.body.style.overflow = '';
+            
+            // Remove keyboard event listener
+            document.removeEventListener('keydown', handleKeyPress);
+        }
+        
+        function changeSlide(direction) {
+            const slides = document.querySelectorAll('.slide-container img');
+            
+            // Hide current slide
+            slides[currentSlide].className = '';
+            
+            // Calculate new slide index
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            
+            // Show new slide
+            slides[currentSlide].className = 'active';
+            
+            updateCounter();
+        }
+        
+        function updateCounter() {
+            const counter = document.querySelector('.slide-counter');
+            counter.textContent = `${currentSlide + 1} / ${screenshots.length}`;
+        }
+        
+        function handleKeyPress(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            } else if (e.key === 'ArrowLeft') {
+                changeSlide(-1);
+            } else if (e.key === 'ArrowRight') {
+                changeSlide(1);
+            }
         }
     </script>
 </body>
