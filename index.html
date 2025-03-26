@@ -146,14 +146,38 @@
             // Prepare lightbox slides
             prepareSlides();
             
-            // Handle scroll effects
-            window.addEventListener('scroll', handleScroll);
-            handleScroll(); // Initial check
+            // Handle scroll effects - simplified for mobile
+            if (window.innerWidth > 768) {
+                // Only use dimming effect on desktop/tablet
+                window.addEventListener('scroll', handleScroll);
+                handleScroll(); // Initial check
+            } else {
+                // Fixed opacity for mobile
+                const dimmingOverlay = document.getElementById('dimming-overlay');
+                dimmingOverlay.style.opacity = 0.4;
+                
+                // Still reveal sections on mobile
+                window.addEventListener('scroll', revealSections);
+                revealSections();
+            }
         });
         
-        // Handle scroll effects
+        // Handle scroll effects for desktop/tablet
         function handleScroll() {
             // Reveal sections
+            revealSections();
+            
+            // Handle dimming overlay
+            const scrollPosition = window.scrollY;
+            const totalHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercentage = Math.min(scrollPosition / (totalHeight * 0.5), 1);
+            
+            const dimmingOverlay = document.getElementById('dimming-overlay');
+            dimmingOverlay.style.opacity = scrollPercentage;
+        }
+        
+        // Reveal sections as user scrolls - works on all devices
+        function revealSections() {
             const sections = document.querySelectorAll('.section');
             const windowHeight = window.innerHeight;
             
@@ -166,14 +190,6 @@
                     section.classList.add('visible');
                 }
             });
-            
-            // Handle dimming overlay
-            const scrollPosition = window.scrollY;
-            const totalHeight = document.body.scrollHeight - window.innerHeight;
-            const scrollPercentage = Math.min(scrollPosition / (totalHeight * 0.5), 1);
-            
-            const dimmingOverlay = document.getElementById('dimming-overlay');
-            dimmingOverlay.style.opacity = scrollPercentage;
         }
         
         // Lightbox functionality

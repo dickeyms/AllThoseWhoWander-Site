@@ -39,20 +39,26 @@ body.loaded {
     background-attachment: fixed; /* Creates parallax effect */
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
-    will-change: opacity, transform;
+    will-change: opacity; /* Performance optimization */
     z-index: -2; /* Ensure background stays behind content and overlay */
 }
 
-/* Fix for iOS Safari */
+/* Fix for iOS Safari and mobile devices */
 @supports (-webkit-touch-callout: none) {
     #background {
         background-attachment: scroll; /* Prevents Safari zoom issues */
-        background-size: cover; /* Ensure full coverage without zoom */
-        background-position: center center; /* Keep consistent alignment */
+        background-size: cover; 
+        background-position: center center;
     }
 }
 
-/* Background Dimming Overlay */
+@media (max-width: 768px) {
+    #background {
+        background-attachment: scroll; /* Better scrolling on all mobile devices */
+    }
+}
+
+/* Background Dimming Overlay - Mobile Fix */
 #dimming-overlay {
     position: fixed;
     top: 0;
@@ -68,6 +74,8 @@ body.loaded {
     transition: opacity 0.5s ease;
     pointer-events: none; /* Allows clicks to pass through */
     z-index: -1; /* Between background and content */
+    will-change: opacity; /* Performance optimization for mobile */
+    transform: translateZ(0); /* Force hardware acceleration */
 }
 
 /* Main Navigation - Removed */
@@ -430,7 +438,7 @@ footer {
 @media (max-width: 768px) {
     .content {
         max-width: 90vw;
-        margin-top: 25vh; /* Move content lower on mobile */
+        margin-top: 15vh; /* Moved up for mobile */
     }
     
     .trailer-container {
