@@ -164,9 +164,16 @@ body.loaded {
 .subtext {
     font-size: 1.2rem;
     opacity: 0;
-    text-align: left;
+    text-align: right;
     margin-top: 10px;
+    margin-right: 50px;
     animation: fadeInRight 1s ease-in-out 0.4s forwards;
+}
+
+@media (min-width: 769px) {
+    .subtext {
+        margin-right: 150px; /* More spacing on desktop */
+    }
 }
 
 /* Steam Store Button */
