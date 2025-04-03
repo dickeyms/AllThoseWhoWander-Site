@@ -462,6 +462,72 @@ footer {
     }
 }
 
+/* Mobile Screenshot Layout Improvements */
+@media (max-width: 768px) {
+    /* Switch to single column layout for screenshots */
+    .screenshots-grid {
+        grid-template-columns: 1fr; /* Change to single column */
+        width: 90%; /* Wider container to maximize screen usage */
+        gap: 20px; /* Reduced gap between items */
+    }
+
+    /* Make screenshots larger and more prominent */
+    .screenshot-item {
+        transform: none; /* Reset any initial transform */
+    }
+
+    .screenshot-item img {
+        border-radius: 6px; /* Slightly reduced radius for mobile */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Enhanced shadow */
+    }
+
+    /* Improved text shadowing for better readability */
+    .description-content p {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Stronger text shadow */
+        font-size: 1.3rem; /* Slightly larger text */
+        line-height: 1.5; /* Better line height for mobile */
+    }
+    
+    /* Make sure hero text is readable */
+    .content {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+    
+    /* Ensure lightbox controls are easier to tap on mobile */
+    .prev-btn, .next-btn {
+        width: 40px;
+        height: 40px;
+        margin: 0 5px; /* Reduced margin */
+    }
+    
+    /* Ensure close button is easily tappable */
+    .close-btn {
+        font-size: 3rem;
+        top: 10px;
+        right: 15px;
+    }
+}
+
+/* Text shadowing for all devices to improve readability against the scenic background */
+.description-content p {
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+#trailer {
+    margin-top: 20px; /* Add some space above trailer section */
+}
+
+/* Improved footer for mobile */
+@media (max-width: 768px) {
+    .footer-content {
+        padding: 10px 0;
+    }
+    
+    .social-links {
+        gap: 30px; /* More space between social links for easier tapping */
+    }
+}
+
 @media (max-width: 768px) {
     /* Mobile-specific styles - no longer needed to set content positioning here */
     .trailer-container {
