@@ -29,7 +29,14 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="background"></div> <!-- Background Fade-in -->
+    <!-- Video Background with Image Fallback -->
+    <div id="background-container">
+        <video id="background-video" autoplay muted loop playsinline poster="assets/images/background.png">
+            <source src="assets/videos/background.mp4" type="video/mp4">
+            <source src="assets/videos/background.webm" type="video/webm">
+        </video>
+        <div id="background"></div> <!-- Fallback background image -->
+    </div>
     <div id="dimming-overlay"></div> <!-- Background dimming overlay -->
 
     <!-- Sections Order: Hero, Trailer, Description, Screenshots -->
@@ -125,11 +132,37 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Background Fade-in
+            // Background Video/Image Fade-in
             let bg = document.getElementById("background");
-            setTimeout(() => {
-                bg.style.opacity = "1";
-            }, 300);
+            let video = document.getElementById("background-video");
+
+            // Try to fade in video if it exists and can play
+            if (video && window.innerWidth > 768) {
+                video.addEventListener('loadeddata', function() {
+                    setTimeout(() => {
+                        video.style.opacity = "1";
+                    }, 300);
+                });
+
+                // Fallback to image if video fails to load
+                video.addEventListener('error', function() {
+                    setTimeout(() => {
+                        bg.style.opacity = "1";
+                    }, 300);
+                });
+
+                // If video doesn't load within 2 seconds, show image
+                setTimeout(() => {
+                    if (video.style.opacity === "0" || video.style.opacity === "") {
+                        bg.style.opacity = "1";
+                    }
+                }, 2000);
+            } else {
+                // Mobile or no video support - use image
+                setTimeout(() => {
+                    bg.style.opacity = "1";
+                }, 300);
+            }
 
             // Trigger fade-in animations
             document.querySelectorAll(".fade-slide").forEach((el) => {
